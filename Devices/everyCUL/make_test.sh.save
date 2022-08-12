@@ -1,0 +1,1 @@
+avr-gcc -c -mmcu=atmega128 -I. -gstabs -Os -Wall -Wstrict-prototypes -std=gnu99  filename.c -o filename.o
