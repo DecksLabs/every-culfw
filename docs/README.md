@@ -13,7 +13,7 @@ Optional hardware:
  - [868MHz antenna](aliexpress.com/item/1005003723838944.html)
  - LED with resistor 330-470 Ohms, you need to choose proper resistor for the LED you're using
 
-![CC1101 module pinout](docs/cc1101_pinout.png)
+![CC1101 module pinout](cc1101_pinout.png)
 
 #### Soldering dongle
 Connect pins as follows:
@@ -36,9 +36,9 @@ To solder SMA connector directly, you'll need to shorten connector pins to about
 
 Final dongle should look like this:
 
-![Top](docs/top.png)
+![Top](top.png)
 
-![Bottom](docs/bottom.png)
+![Bottom](bottom.png)
 
 ## Convert dongle
 Firmware port is pin compatible with nanoCUL stick so you need to replace Arduino Nano with Nano Every, flash firmware and it's done :)
