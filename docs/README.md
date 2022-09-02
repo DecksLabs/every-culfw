@@ -10,7 +10,7 @@ Required hardware:
 
 Optional hardware:
  - [SMA PCB connector](https://aliexpress.com/item/1005001887840746.html) (type2 from linked listing)
- - [868MHz antenna](aliexpress.com/item/1005003723838944.html)
+ - [868MHz antenna](https://aliexpress.com/item/1005003723838944.html)
  - LED with resistor 330-470 Ohms, you need to choose proper resistor for the LED you're using
 
 ![CC1101 module pinout](cc1101_pinout.png)
