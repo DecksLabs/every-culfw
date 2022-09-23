@@ -6,7 +6,7 @@ I made the dongle myself.
 Required hardware:
  - Arduino Nano Every
  - CC1101 module, there are two options
-   - Better reception, harder to solder: [EBYTE E07 900M10S](https://aliexpress.com/item/1005003262052074.html) requiring additional [pigtail u.fl to SMA female](aliexpress.com/item/1005001838374288.html)
+   - Better reception, harder to solder: [EBYTE E07 900M10S](https://aliexpress.com/item/1005003262052074.html) requiring additional [pigtail u.fl to SMA female](https://aliexpress.com/item/1005001838374288.html)
    - or easier to solder [generic CC1101 module](https://aliexpress.com/item/1005004633785066.html) - make sure you're buying 868MHz version
  - Wire to connect everything together - wire wraping wire 30AWG can be used for EBYTE module
 
