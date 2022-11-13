@@ -62,6 +62,6 @@ Firmware port is pin compatible with nanoCUL stick so you need to replace Arduin
 Arduino IDE installed, python3 with pyserial module ([required to reset Arduino](https://forum.arduino.cc/t/reset-nano-every-via-1200-baud-touch/939949)), PATH with added `<path to arduino>/hardware/tools/avr/bin`
 
 ### Flashing
-Download released files. There should be nanoCUL.hex and nanoCUL.fuse.bin.
+Download [released files](https://github.com/DecksLabs/every-culfw/releases/download/1.0/everyCUL.zip). There should be nanoCUL.hex and nanoCUL.fuse.bin.
 See the commands in flash.sh and adjust them to your needs or on linux run the script like `./flash.sh -d /dev/ttyACM0`.
 
