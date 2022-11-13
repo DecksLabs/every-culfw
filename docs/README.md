@@ -6,7 +6,7 @@ I made the dongle myself.
 Required hardware:
  - Arduino Nano Every
  - CC1101 module, there are two options
-   - Better reception, harder to solder: [EBYTE E07 900M10S](https://aliexpress.com/item/1005003262052074.html) requiring additional [pigtail u.fl to SMA female](https://aliexpress.com/item/1005001838374288.html)
+   - Better reception, harder to solder: [EBYTE E07 900M10S](https://aliexpress.com/item/1005003262052074.html) requiring additional [pigtail u.fl to SMA female](https://aliexpress.com/item/1005001838374288.html) and a 100nF ceramic capacitor
    - or easier to solder [generic CC1101 module](https://aliexpress.com/item/1005004633785066.html) - make sure you're buying 868MHz version
  - Wire to connect everything together - wire wraping wire 30AWG can be used for EBYTE module
 
@@ -34,9 +34,20 @@ Connect pins as follows:
 After that solder either wire antenna you got with the module or the optional SMA connector.
 To solder SMA connector directly, you'll need to shorten connector pins to about half original length. Check the length before cutting!
 
+The EBYTE module according to @gd35 has much better reception when there is 100nF cap soldered between GND and 3,3V of the module.
+
 **Not recommended:** LED was needed for development of this port, otherwise it's useless. To install optional LED solder it in series with resistor first and then solder anode to D4 pin of Arduino. Check polarity of the LED :)
 
 Final dongle should look like this:
+
+Newer version:
+
+![New version](new_in_case.jpg)
+[Case bottom](cul_case_bottom.stl)
+[Case top](cul_case_top.stl)
+
+
+Older version:
 
 ![Top](top.png)
 
