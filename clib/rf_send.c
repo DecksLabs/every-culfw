@@ -48,10 +48,10 @@ uint16_t credit_10ms;
   static void
   send_bit(uint8_t bit)
   {
-    PORTF.OUTSET = PIN5_bm; //CC1100_OUT_PORT |= _BV(CC1100_OUT_PIN);         // High
+    PORTA.OUTSET = PIN1_bm; //CC1100_OUT_PORT |= _BV(CC1100_OUT_PIN);         // High
     my_delay_us(bit ? TMUL(onehigh) : TMUL(zerohigh));
 
-    PORTF.OUTCLR = PIN5_bm; //CC1100_OUT_PORT &= ~_BV(CC1100_OUT_PIN);       // Low
+    PORTA.OUTCLR = PIN1_bm; //CC1100_OUT_PORT &= ~_BV(CC1100_OUT_PIN);       // Low
     my_delay_us(bit ? TMUL(onelow) : TMUL(zerolow));
   }
 
@@ -63,10 +63,10 @@ uint16_t credit_10ms;
   static void
   send_bit(uint8_t bit)
   {
-    PORTF.OUTSET = PIN5_bm; //CC1100_OUT_PORT |= _BV(CC1100_OUT_PIN);         // High
+    PORTA.OUTSET = PIN1_bm; //CC1100_OUT_PORT |= _BV(CC1100_OUT_PIN);         // High
     my_delay_us(bit ? FS20_ONE : FS20_ZERO);
 
-    PORTF.OUTCLR = PIN5_bm; //CC1100_OUT_PORT &= ~_BV(CC1100_OUT_PIN);       // Low
+    PORTA.OUTCLR = PIN1_bm; //CC1100_OUT_PORT &= ~_BV(CC1100_OUT_PIN);       // Low
     my_delay_us(bit ? FS20_ONE : FS20_ZERO);
   }
 
@@ -86,18 +86,16 @@ sendraw(uint8_t *msg, uint8_t sync, uint8_t nbyte, uint8_t bitoff,
   }
   credit_10ms -= sum;
 
-  LED_ON();
-
   if(!cc_on)
     set_ccon();
   ccTX();                                       // Enable TX 
   do {
 
     if(addH>0 || addL>0) {
-      PORTF.OUTSET = PIN5_bm; //CC1100_OUT_PORT |= _BV(CC1100_OUT_PIN);        // High
+      PORTA.OUTSET = PIN1_bm; //CC1100_OUT_PORT |= _BV(CC1100_OUT_PIN);        // High
       my_delay_us(TMUL(addH));
 
-      PORTF.OUTCLR = PIN5_bm; //CC1100_OUT_PORT &= ~_BV(CC1100_OUT_PIN);       // Low
+      PORTA.OUTCLR = PIN1_bm; //CC1100_OUT_PORT &= ~_BV(CC1100_OUT_PIN);       // Low
       my_delay_us(TMUL(addL));
     }
 
@@ -122,8 +120,6 @@ sendraw(uint8_t *msg, uint8_t sync, uint8_t nbyte, uint8_t bitoff,
   } else {
     ccStrobe(CC1100_SIDLE);
   }
-
-  LED_OFF();
 }
 
 static int

@@ -5,14 +5,14 @@
 void
 spi_init(void)
 {
-    PORTE.DIR |= PIN0_bm; /* Set MOSI pin direction to output */
-    PORTE.DIR &= ~PIN1_bm; /* Set MISO pin direction to input */
-    PORTE.DIR |= PIN2_bm; /* Set SCK pin direction to output */
-    PORTB.DIR |= PIN1_bm; /* Set CS (using PB1 for this) pin direction to output */
+    PORTC.DIR |= PIN0_bm; /* Set MOSI pin direction to output */
+    PORTC.DIR &= ~PIN1_bm; /* Set MISO pin direction to input */
+    PORTC.DIR |= PIN2_bm; /* Set SCK pin direction to output */
+    PORTC.DIR |= PIN3_bm; /* Set CS (using PC3 for this) pin direction to output */
 
-    PORTMUX.TWISPIROUTEA = PORTMUX_SPI0_ALT2_gc;
+    PORTMUX.TWISPIROUTEA = PORTMUX_SPI0_ALT1_gc;
 
-    SPI0.CTRLB |= SPI_SSD_bm; // we're not using SPI CS pin, we're using PB1 GPIO for CS
+    SPI0.CTRLB |= SPI_SSD_bm; // we're driving CS manually
 
     SPI0.CTRLA = SPI_CLK2X_bm           /* Enable double-speed */
                | SPI_ENABLE_bm          /* Enable module */

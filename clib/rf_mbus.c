@@ -114,14 +114,14 @@ static uint8_t rf_mbus_on(uint8_t force) {
 
 static void rf_mbus_init(uint8_t mmode, uint8_t rmode) {
 
-  PORTF.DIRCLR = PIN5_bm; //CLEAR_BIT( GDO0_DDR, GDO0_BIT ); //PF5
+  PORTA.DIRCLR = PIN1_bm; //CLEAR_BIT( GDO0_DDR, GDO0_BIT ); //PF5
   PORTA.DIRCLR = PIN0_bm; //CLEAR_BIT( GDO2_DDR, GDO2_BIT ); //PA0
 
   mbus_mode  = WMBUS_NONE;
   radio_mode = RADIO_MODE_NONE;
 
-  PORTD.PIN2CTRL &= ~PORT_ISC_gm; //EIMSK &= ~_BV(CC1100_INT);                 // disable INT - we'll poll...
-  PORTB.DIR |= PIN1_bm; //SET_BIT( CC1100_CS_DDR, CC1100_CS_PIN );   // CS as output
+  PORTA.PIN0CTRL &= ~PORT_ISC_gm; //EIMSK &= ~_BV(CC1100_INT);                 // disable INT - we'll poll...
+  PORTC.DIR |= PIN3_bm; //SET_BIT( CC1100_CS_DDR, CC1100_CS_PIN );   // CS as output
 
   CC1100_DEASSERT;                           // Toggle chip select signal
   my_delay_us(30);
@@ -224,7 +224,7 @@ void rf_mbus_task(void) {
 
     // awaiting pkt len to read
     case 2:
-      if ((PORTF.IN & PIN5_bm)) {
+      if ((PORTA.IN & PIN1_bm)) {
         // Read the 3 first bytes
         halRfReadFifo(RXinfo.pByteIndex, 3, NULL, NULL);
 
@@ -327,7 +327,7 @@ void rf_mbus_task(void) {
 
     // awaiting more data to be read
     case 3:
-      if ((PORTF.IN & PIN5_bm)) {
+      if ((PORTA.IN & PIN1_bm)) {
         // - Length mode -
         // Set fixed packet length mode is less than MAX_FIXED_LENGTH bytes
         if (((RXinfo.bytesLeft) < (MAX_FIXED_LENGTH )) && (RXinfo.format == INFINITE)) {
@@ -489,7 +489,7 @@ uint16 txSendPacket(uint8* pPacket, uint8* pBytes, uint8 mode) {
   // Wait for available space in FIFO
   while (!TXinfo.complete) {
 
-    if ((PORTF.IN & PIN5_bm)) {
+    if ((PORTA.IN & PIN1_bm)) {
       // Write data fragment to TX FIFO
       bytesToWrite = MIN(TX_AVAILABLE_FIFO, TXinfo.bytesLeft);
       halRfWriteFifo(TXinfo.pByteIndex, bytesToWrite);

@@ -1,5 +1,4 @@
-MCU = atmega4809
-#MCU = atmega328p
+MCU = atmega4808
 BOARD  =
 F_CPU = 8000000
 FORMAT = ihex
@@ -43,6 +42,7 @@ CPPDEFS = -DF_CPU=$(F_CPU)UL
 
 
 CFLAGS = -g$(DEBUG)
+CFLAGS += -B /home/decks/Downloads/atpack/gcc/dev/atmega48008 -isystem /home/decks/Downloads/atpack/include
 CFLAGS += $(CDEFS)
 CFLAGS += -O$(OPT)
 CFLAGS += -funsigned-char
@@ -70,7 +70,7 @@ CPPFLAGS += -fpack-struct
 CPPFLAGS += -fshort-enums
 CPPFLAGS += -fno-exceptions
 CPPFLAGS += -Wall
-CFLAGS += -Wundef
+CPPFLAGS += -B /home/decks/Downloads/atpack/gcc/dev/atmega48008 -isystem /home/decks/Downloads/atpack/include
 CPPFLAGS += -Wa,-adhlns=$(<:%.cpp=$(OBJDIR)/%.lst)
 CPPFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
 

@@ -179,8 +179,8 @@ extern uint8_t cc_on;
 
 
 
-#define CC1100_DEASSERT  PORTB.OUT |= PIN1_bm; //#define CC1100_DEASSERT  SET_BIT( CC1100_CS_PORT, CC1100_CS_PIN )
-#define CC1100_ASSERT    PORTB.OUT &= ~PIN1_bm; //#define CC1100_ASSERT    CLEAR_BIT( CC1100_CS_PORT, CC1100_CS_PIN )
+#define CC1100_DEASSERT  PORTC.OUT |= PIN3_bm; //#define CC1100_DEASSERT  SET_BIT( CC1100_CS_PORT, CC1100_CS_PIN )
+#define CC1100_ASSERT    PORTC.OUT &= ~PIN3_bm; //#define CC1100_ASSERT    CLEAR_BIT( CC1100_CS_PORT, CC1100_CS_PIN )
 
 
 /******************************************************************************/

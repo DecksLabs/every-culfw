@@ -109,8 +109,8 @@ cc1100_sendbyte(uint8_t data)
 void
 ccInitChip(uint8_t *cfg)
 {
-  PORTD.PIN2CTRL &= ~PORT_ISC_gm; //EIMSK &= ~_BV(CC1100_INT);                 
-  PORTB.DIR |= PIN1_bm; //SET_BIT( CC1100_CS_DDR, CC1100_CS_PIN ); // CS as output
+  PORTA.PIN0CTRL &= ~PORT_ISC_gm; //EIMSK &= ~_BV(CC1100_INT);                 
+  PORTC.DIR |= PIN3_bm; //SET_BIT( CC1100_CS_DDR, CC1100_CS_PIN ); // CS as output
 
   CC1100_DEASSERT;                           // Toggle chip select signal
   my_delay_us(30);
@@ -205,7 +205,7 @@ void
 ccTX(void)
 {
   uint8_t cnt = 0xff;
-  PORTD.PIN2CTRL &= ~PORT_ISC_gm; //EIMSK  &= ~_BV(CC1100_INT);
+  PORTA.PIN0CTRL &= ~PORT_ISC_gm; //EIMSK  &= ~_BV(CC1100_INT);
 
   // Going from RX to TX does not work if there was a reception less than 0.5
   // sec ago. Due to CCA? Using IDLE helps to shorten this period(?)
@@ -225,8 +225,8 @@ ccRX(void)
         (ccStrobe(CC1100_SRX) & CC1100_STATUS_STATE_BM) != CC1100_STATE_RX)
     my_delay_us(10);
     
-  PORTD.INTFLAGS = PIN2_bm;
-  PORTD.PIN2CTRL |= PORT_ISC_BOTHEDGES_gc; //EIMSK |= _BV(CC1100_INT);
+  PORTA.INTFLAGS = PIN0_bm;
+  PORTA.PIN0CTRL |= PORT_ISC_BOTHEDGES_gc; //EIMSK |= _BV(CC1100_INT);
 }
 
 

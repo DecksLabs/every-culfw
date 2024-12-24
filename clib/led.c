@@ -2,20 +2,20 @@
 
 void led_init(void)
 {
-	PORTC.DIR |= PIN6_bm;
+	PORTC.DIR |= PIN2_bm;
 }
 
 void LED_ON(void)
 {
-	PORTC.OUT |= PIN6_bm;
+	PORTC.OUT |= PIN2_bm;
 }
 
 void LED_OFF(void)
 {
-	PORTC.OUT &= ~PIN6_bm;
+	PORTC.OUT &= ~PIN2_bm;
 }
 
 void LED_TOGGLE(void)
 {
-	PORTC.OUT ^= PIN6_bm;
+	PORTC.OUT ^= PIN2_bm;
 }

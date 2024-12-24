@@ -95,8 +95,8 @@ static uint8_t wave_equals(wave_t *a, uint8_t htime, uint8_t ltime, uint8_t stat
 void
 tx_init(void)
 {
-  PORTF.DIRSET = PIN5_bm; //SET_BIT  ( CC1100_OUT_DDR,  CC1100_OUT_PIN);
-  PORTF.OUTCLR = PIN5_bm; //CLEAR_BIT( CC1100_OUT_PORT, CC1100_OUT_PIN);
+  PORTA.DIRSET = PIN1_bm; //SET_BIT  ( CC1100_OUT_DDR,  CC1100_OUT_PIN);
+  PORTA.OUTCLR = PIN1_bm; //CLEAR_BIT( CC1100_OUT_PORT, CC1100_OUT_PIN);
 
   PORTA.DIRCLR = PIN0_bm; //CLEAR_BIT( CC1100_IN_DDR,   CC1100_IN_PIN);
   PORTA.PIN0CTRL |= PORT_ISC_BOTHEDGES_gc; //SET_BIT( CC1100_EICR, CC1100_ISC);  // Any edge of INTx generates an int.
@@ -343,8 +343,6 @@ RfAnalyze_Task(void)
   if(bucket_nrused == 0)
     return;
 
-  LED_ON();
-
   b = bucket_array + bucket_out;
 
   if(!datatype && analyze(b, TYPE_FS20)) { // Can be FS10 (433Mhz) or FS20 (868MHz)
@@ -467,8 +465,6 @@ RfAnalyze_Task(void)
   bucket_out++;
   if(bucket_out == RCV_BUCKETS)
     bucket_out = 0;
-
-  LED_OFF();
 }
 
 static void
@@ -578,6 +574,7 @@ delbit(bucket_t *b)
 // "Edge-Detected" Interrupt Handler
 ISR(PORTA_PORT_vect)
 {
+  LED_TOGGLE();
   if(PORTA.INTFLAGS & PIN0_bm)
     PORTA.INTFLAGS &= PIN0_bm;
   else
