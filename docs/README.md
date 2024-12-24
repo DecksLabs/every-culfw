@@ -4,7 +4,7 @@ This is very rudimentary port of culfw to Arduino Nano Every that supports mbus 
 ## DIY dongle
 I made the dongle myself.
 Required hardware:
- - Arduino Nano Every
+ - Arduino Nano Every/Thinary Nano Every (aka chinese clone with atmega 4808)
  - CC1101 module, there are two options
    - Better reception, harder to solder: [EBYTE E07 900M10S](https://aliexpress.com/item/1005003262052074.html) requiring additional [pigtail u.fl to SMA female](https://aliexpress.com/item/1005001838374288.html) and a 100nF ceramic capacitor
    - or easier to solder [generic CC1101 module](https://aliexpress.com/item/1005004633785066.html) - make sure you're buying 868MHz version
@@ -62,6 +62,6 @@ Firmware port is pin compatible with nanoCUL stick so you need to replace Arduin
 Arduino IDE installed, python3 with pyserial module ([required to reset Arduino](https://forum.arduino.cc/t/reset-nano-every-via-1200-baud-touch/939949)), PATH with added `<path to arduino>/hardware/tools/avr/bin`
 
 ### Flashing
-Download [released files](https://github.com/DecksLabs/every-culfw/releases/download/1.0/everyCUL.zip). There should be nanoCUL.hex and nanoCUL.fuse.bin.
+Download correct fw version for your board from: [released files](https://github.com/DecksLabs/every-culfw/releases/). There should be nanoCUL.hex and nanoCUL.fuse.bin.
 See the commands in flash.sh and adjust them to your needs or on linux run the script like `./flash.sh -d /dev/ttyACM0`.
 
